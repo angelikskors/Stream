@@ -36,4 +36,12 @@ public class LibraryString {
 		this.year = year;
 	}
 
+	@Override
+	public String toString() {
+		return "LibraryString{" +
+				"author='" + author + '\'' +
+				", name='" + name + '\'' +
+				", year=" + year +
+				'}';
+	}
 }
