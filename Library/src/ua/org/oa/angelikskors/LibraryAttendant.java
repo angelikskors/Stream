@@ -50,14 +50,14 @@ public class LibraryAttendant {
 	}
 
     public static void writeIntoFile(File f) throws IOException{
-			Scanner bf = new Scanner(System.in).useDelimiter(";");
+			BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
 			FileWriter writer = new FileWriter(f, true);
 			BufferedWriter df = new BufferedWriter(writer);
 
             LibraryStringFormatter formatter = new LibraryStringFormatter();
-			while (bf.hasNext()){
-                String s = bf.nextLine();
-                LibraryString libraryString = formatter.parse(s);
+            String line = null;
+			while ((line = bf.readLine())!= null){
+                LibraryString libraryString = formatter.parse(line);
                 if(libraryString != null){
                     System.out.println("parsed " + libraryString);
                     df.write(formatter.format(libraryString));
