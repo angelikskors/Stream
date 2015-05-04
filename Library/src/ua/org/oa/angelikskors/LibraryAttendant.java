@@ -43,31 +43,25 @@ public class LibraryAttendant {
 		bf.close();
 
 		for (LibraryString string : books) {
-			System.out.println("�����: " + string.getAuthor()
-					+ " ��������: " + string.getName() + " ���:  "
+			System.out.println("Authors name: " + string.getAuthor()
+					+ " Name of the book: " + string.getName() + " Year:  "
 					+ string.getYear());
 		}
 	}
 
-    public static void writeIntoFile(File f) throws IOException{
-			BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
-			FileWriter writer = new FileWriter(f, true);
-			BufferedWriter df = new BufferedWriter(writer);
+	public static void writeIntoFile(File f) throws IOException {
+		BufferedReader bf = new BufferedReader(new InputStreamReader(System.in));
+		FileWriter writer = new FileWriter(f, true);
+		BufferedWriter df = new BufferedWriter(writer);
 
-            LibraryStringFormatter formatter = new LibraryStringFormatter();
-            String line = null;
-			while ((line = bf.readLine())!= null){
-                LibraryString libraryString = formatter.parse(line);
-                if(libraryString != null){
-                    System.out.println("parsed " + libraryString);
-                    df.write(formatter.format(libraryString));
-                    df.flush();
-                }else {
-                    System.out.println("input finished");
-                    break;
-                }
-            }
-			df.close();
+		LibraryStringFormatter formatter = new LibraryStringFormatter();
+		LibraryString newStr = new LibraryString("dfdfdf", "null", 120);
+
+		df.write(formatter.format(newStr));
+
+		df.flush();
+
+		df.close();
 
 	}
 }
